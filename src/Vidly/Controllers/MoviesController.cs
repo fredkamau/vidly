@@ -14,17 +14,12 @@ namespace Vidly.Controllers
         public ActionResult Random()
         {
             Movie cinema = new Movie() {  Name = "The Inception"};
-            List<Customer> mteja = new List<Customer>
-            {
-                new Customer{ Id = 1, Name="fredrick" },
-                new Customer{ Id = 2, Name="wagathegi" },
-                new Customer{ Id = 1, Name="kamau" }
-            };
+            Customer mteja = new Customer {Id = 1, Name="fredrick"};
             RandomMovieViewModel rm = new RandomMovieViewModel
             {
-                //initialise movie property
+                //initialise movie property--mapping properties to objects
                 movie = cinema,
-                customer = 
+                customer = mteja
             };
             return View(rm);
             

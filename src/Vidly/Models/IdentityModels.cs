@@ -24,10 +24,12 @@ namespace Vidly.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
-
+        public DbSet<Movie> Movie { get; set; }
+        public DbSet<Customer> Customers { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();
         }
     }
+   
 }
