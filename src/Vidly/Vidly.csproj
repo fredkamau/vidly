@@ -174,6 +174,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\MoviesController.cs" />
@@ -196,6 +197,26 @@
     <Compile Include="Migrations\201905021229189_AddMembershipType.Designer.cs">
       <DependentUpon>201905021229189_AddMembershipType.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905021241017_PopulateMembershipTypes.cs" />
+    <Compile Include="Migrations\201905021241017_PopulateMembershipTypes.Designer.cs">
+      <DependentUpon>201905021241017_PopulateMembershipTypes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905021258342_ApplyDataAnnotationsToCustomerName.cs" />
+    <Compile Include="Migrations\201905021258342_ApplyDataAnnotationsToCustomerName.Designer.cs">
+      <DependentUpon>201905021258342_ApplyDataAnnotationsToCustomerName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905021530284_AddMembershipTypeName.cs" />
+    <Compile Include="Migrations\201905021530284_AddMembershipTypeName.Designer.cs">
+      <DependentUpon>201905021530284_AddMembershipTypeName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905031147220_birthdate.cs" />
+    <Compile Include="Migrations\201905031147220_birthdate.Designer.cs">
+      <DependentUpon>201905031147220_birthdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905041026294_UpdatedCustomerModel.cs" />
+    <Compile Include="Migrations\201905041026294_UpdatedCustomerModel.Designer.cs">
+      <DependentUpon>201905041026294_UpdatedCustomerModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
@@ -205,6 +226,7 @@
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModel\CustomerFormViewModel.cs" />
     <Compile Include="ViewModel\RandomMovieViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -266,6 +288,8 @@
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Movies\Random.cshtml" />
     <Content Include="Views\Shared\_NavBar.cshtml" />
+    <Content Include="Views\Customer\CustomerForm.cshtml" />
+    <Content Include="Views\Customer\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -295,6 +319,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905021229189_AddMembershipType.resx">
       <DependentUpon>201905021229189_AddMembershipType.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905021241017_PopulateMembershipTypes.resx">
+      <DependentUpon>201905021241017_PopulateMembershipTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905021258342_ApplyDataAnnotationsToCustomerName.resx">
+      <DependentUpon>201905021258342_ApplyDataAnnotationsToCustomerName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905021530284_AddMembershipTypeName.resx">
+      <DependentUpon>201905021530284_AddMembershipTypeName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905031147220_birthdate.resx">
+      <DependentUpon>201905031147220_birthdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905041026294_UpdatedCustomerModel.resx">
+      <DependentUpon>201905041026294_UpdatedCustomerModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
