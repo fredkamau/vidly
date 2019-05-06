@@ -49,12 +49,21 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -173,7 +182,9 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CustomersController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -225,12 +236,25 @@
     <Compile Include="Migrations\201905050627365_PopulateMovieGenre.Designer.cs">
       <DependentUpon>201905050627365_PopulateMovieGenre.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905051418472_customerModelUpdated.cs" />
+    <Compile Include="Migrations\201905051418472_customerModelUpdated.Designer.cs">
+      <DependentUpon>201905051418472_customerModelUpdated.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905051424323_customerModelrollback.cs" />
+    <Compile Include="Migrations\201905051424323_customerModelrollback.Designer.cs">
+      <DependentUpon>201905051424323_customerModelrollback.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905061153219_birthdate1.cs" />
+    <Compile Include="Migrations\201905061153219_birthdate1.Designer.cs">
+      <DependentUpon>201905061153219_birthdate1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Customer.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\Movie.cs" />
     <Compile Include="Models\MovieGenre.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -353,6 +377,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905050627365_PopulateMovieGenre.resx">
       <DependentUpon>201905050627365_PopulateMovieGenre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905051418472_customerModelUpdated.resx">
+      <DependentUpon>201905051418472_customerModelUpdated.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905051424323_customerModelrollback.resx">
+      <DependentUpon>201905051424323_customerModelrollback.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905061153219_birthdate1.resx">
+      <DependentUpon>201905061153219_birthdate1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

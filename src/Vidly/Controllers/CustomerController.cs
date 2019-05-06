@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Vidly.Models;
 using System.Data.Entity;
 using Vidly.ViewModel;
+using System.Data.Entity.Validation;
 
 namespace Vidly.Controllers
 {
@@ -29,12 +30,22 @@ namespace Vidly.Controllers
         public ActionResult CustomerForm()
         {
             var membershipTypes = _context.MembershipTypes.ToList();
-            CustomerFormViewModel viewmodel = new CustomerFormViewModel { MembershipTypes = membershipTypes};
+            CustomerFormViewModel viewmodel = new CustomerFormViewModel { MembershipTypes = membershipTypes };
             return View(viewmodel);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Save(Customer customer)
         {
+            if (!ModelState.IsValid)
+            {
+                CustomerFormViewModel viewModel = new CustomerFormViewModel
+                {
+                    Customer = customer,
+                    MembershipTypes = _context.MembershipTypes.ToList()
+                };
+                return View("CustomerForm", viewModel);
+            }
             if (customer.Id == 0)
             {
                 _context.Customers.Add(customer);
@@ -46,8 +57,8 @@ namespace Vidly.Controllers
                 customerInDb.Birthdate = customer.Birthdate;
                 customerInDb.MembershipTypeId = customer.MembershipTypeId;
                 customerInDb.IsSubscribedToNewsletter = customer.IsSubscribedToNewsletter;
-            }        
-            _context.SaveChanges();
+            }
+            _context.SaveChanges();           
             return RedirectToAction("Index", "Customer");
         }
         public ActionResult Edit(int id)

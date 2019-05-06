@@ -17,9 +17,11 @@ namespace Vidly.Models
         public DateTime? Birthdate { get; set; }
         public bool IsSubscribedToNewsletter { get; set; }
         //navigation property-allows us to navigate from customer to membership type
+        [Required]
         public MembershipType MembershipType { get; set; }
         //foreign key
-        [Display(Name ="Membership Type")]
+        [Display(Name ="Membership Type")]  
+        [Min18YearsIfAMember]
         public byte MembershipTypeId { get; set; }
 
     }

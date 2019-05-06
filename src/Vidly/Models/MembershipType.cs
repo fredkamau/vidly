@@ -20,5 +20,8 @@ namespace Vidly.Models
         public byte DurationInMonths { get; set; }
         //discount rate
         public byte DiscountRate { get; set; }
+        //magic numbers definition
+        public static readonly byte Uknown = 0;
+        public static readonly byte PayAsYouGo = 1;
     }
 }
