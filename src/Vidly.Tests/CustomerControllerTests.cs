@@ -1,9 +1,5 @@
 ﻿using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Web.Mvc;
 using Vidly.Controllers;
 
 namespace Vidly.Tests
@@ -12,9 +8,14 @@ namespace Vidly.Tests
     public class CustomerControllerTests
     {
         [Test]
-        public void CustomerController_EditWhenCustomerIsNull()
+        public void CustomerController_EditWhenCustomerIsNull_returnHttpNotFound()
         {
+            //arrange
             var customer = new CustomerController();
+            //Act
+            var result = customer.Edit(0);
+            //Assert
+            Assert.That(result, Is.TypeOf<HttpNotFoundResult>());
             
         }
     }

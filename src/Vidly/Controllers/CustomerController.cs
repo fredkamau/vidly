@@ -17,7 +17,7 @@ namespace Vidly.Controllers
         {
             _context = new ApplicationDbContext();
         }
-        //DbContext is a Dispsable object
+        //DbContext is a Disposable object
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
