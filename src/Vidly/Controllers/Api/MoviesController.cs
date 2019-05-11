@@ -1,9 +1,11 @@
-﻿using System;
+﻿using AutoMapper;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using Vidly.Dtos;
 using Vidly.Models;
 
 namespace Vidly.Controllers.Api
@@ -16,23 +18,23 @@ namespace Vidly.Controllers.Api
             _context = new ApplicationDbContext();
         }
         //GET /api/movies
-        public IEnumerable<Movie> GetMovies()
+        public IEnumerable<MovieDtos> GetMovies()
         {
-            return _context.Movie.ToList();
+            return _context.Movie.ToList().Select(Mapper.Map<Movie, MovieDtos>);
         }
         //GET /api/movies/1
-        public Movie GetMovie(int id)
+        public MovieDtos GetMovie(int id)
         {
            var movie =  _context.Movie.SingleOrDefault(m => m.Id == id);
             if (movie == null)
             {
                 throw new HttpRequestException(HttpStatusCode.NotFound.ToString());
             }
-            return movie;
+            return Mapper.Map<Movie, MovieDtos>(movie);
         }
         //POST api/customers
         [HttpPost]
-        public Movie CreateMovie(Movie movie)
+        public MovieDtos CreateMovie (MovieDtos movieDto)
         {
             if (!ModelState.IsValid)
             {
@@ -40,14 +42,16 @@ namespace Vidly.Controllers.Api
             }
             else
             {
+                var movie = Mapper.Map<MovieDtos, Movie>(movieDto);
                 _context.Movie.Add(movie);
                 _context.SaveChanges();
+                movieDto.Id = movie.Id;
             }
-            return movie;                       
+            return movieDto;                       
         }
         //PUT /api/movies/1
         [HttpPut]
-        public void UpdateMovie(int id, Movie movie)
+        public void UpdateMovie(int id, MovieDtos movieDto)
         {   //When submitting the form, if you have an error in the date, ModelState.IsValid will be false 
             if (!ModelState.IsValid)
             {
@@ -58,10 +62,7 @@ namespace Vidly.Controllers.Api
             {
                 throw new HttpResponseException(HttpStatusCode.NotFound);
             }
-            movieInDb.Name = movie.Name;
-            movieInDb.ReleaseDate = movie.ReleaseDate;
-            movieInDb.NumberInStock = movie.NumberInStock;
-            movieInDb.GenreId = movie.GenreId;
+            Mapper.Map<MovieDtos, Movie>(movieDto, movieInDb);          
             _context.SaveChanges();       
         }
         //DELETE /api/movies/1
